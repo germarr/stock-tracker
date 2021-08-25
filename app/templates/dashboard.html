@@ -26,6 +26,17 @@
         </button>
     </div>
 </div>
+<div class="flex justify-center items-center mt-2">
+  <div class="mr-2 pt-0">
+    <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"></textarea>
+  </div>
+  <div class="ml-2 pt-0">
+    <button class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+  >
+Add
+    </button>
+  </div>
+</div>
 <div>
     <section class="container mx-auto p-6 font-mono">
         <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
@@ -33,13 +44,13 @@
             <table class="w-full">
               <thead>
                 <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                  <th class="px-4 py-3">Name</th>
-                  <th class="px-4 py-3">Age</th>
-                  <th class="px-4 py-3">Status</th>
-                  <th class="px-4 py-3">Date</th>
+                  <th class="px-4 py-3">Symbol</th>
+                  <th class="px-4 py-3">P/E</th>
+                  <th class="px-4 py-3">Dividend Yield</th>
                 </tr>
               </thead>
               <tbody class="bg-white">
+                {% for stock in stocks %}
                 <tr class="text-gray-700">
                   <td class="px-4 py-3 border">
                     <div class="flex items-center text-sm">
@@ -48,22 +59,30 @@
                         <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                       </div>
                       <div>
-                        <p class="font-semibold text-black">Sufyan</p>
-                        <p class="text-xs text-gray-600">Developer</p>
+                        <p class="font-semibold text-black">{{stock.symbol}}</p>
+                        <!-- <p class="text-xs text-gray-600">Compnay</p> -->
                       </div>
                     </div>
                   </td>
-                  <td class="px-4 py-3 text-ms font-semibold border">22</td>
+                  <td class="px-4 py-3 text-ms font-semibold border">{{stock.forward_pe}}</td>
                   <td class="px-4 py-3 text-xs border">
-                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> Acceptable </span>
+                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm">{{stock.dividend_yield}} </span>
                   </td>
-                  <td class="px-4 py-3 text-sm border">6/4/2000</td>
                 </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
         </div>
       </section>
 </div>
+<button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+<script>
+  function myFunction() {
+    document.getElementById("demo").innerHTML = "Hello World";
+  }
+</script>
 
 {% endblock %}

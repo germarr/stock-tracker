@@ -48,13 +48,17 @@ def read_root():
     return {"Hello": "World"}
 
 @app.get("/")
-def index(request:Request):
+def index(request:Request, db:Session=Depends(get_db)):
     """
     Display the main Dashboard from Youtube.
     """
+    stocks = db.query(Stock).all()
+
+    print(stocks)
+
     return templates.TemplateResponse("dashboard.html",{
         "request":request,
-        "somevar":2
+        "stocks":stocks
     })
 
 @app.post("/stock")
