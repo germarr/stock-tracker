@@ -163,11 +163,12 @@ models.Base.metadata.create_all(bind=engine)
 Al agregarlo y guardar, se generará un *file* llamado `stocks.db`. Este archivo almazenará toda la data necesaria para nuestra app.
 
 Podemos revisar el *schema* de la tabla si dentro de la línea de comando usamos:
-```bash
+```sql
 sqlite3 stocks.db
 .schema
 select * from stocks;
-insert 
+
+delete from stocks;
 ```
 En esta [liga](https://www.youtube.com/watch?v=XA3w8tQnYCA) hay un video de como instalar sqlite3 si no lo tienes en tu computadora. 
 
